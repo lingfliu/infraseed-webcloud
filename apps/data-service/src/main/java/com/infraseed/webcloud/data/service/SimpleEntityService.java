@@ -1,6 +1,6 @@
 package com.infraseed.webcloud.data.service;
 
-import com.infraseed.webcloud.common.core.ValiRet;
+import com.infraseed.webcloud.common.core.ValiResult;
 import com.infraseed.webcloud.common.data.BaseOp;
 import com.infraseed.webcloud.common.security.TenantContext;
 import com.infraseed.webcloud.data.domain.SimpleEntity;
@@ -20,11 +20,11 @@ public class SimpleEntityService implements BaseOp<SimpleEntity> {
     }
 
     @Override
-    public ValiRet validate(SimpleEntity data) {
+    public ValiResult validate(SimpleEntity data) {
         if (data == null) {
-            return ValiRet.fail(40001, "body required");
+            return ValiResult.fail(40001, "body required");
         }
-        return ValiRet.pass();
+        return ValiResult.pass();
     }
 
     @Override

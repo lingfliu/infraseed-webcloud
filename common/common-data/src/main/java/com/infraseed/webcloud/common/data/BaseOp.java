@@ -1,6 +1,6 @@
 package com.infraseed.webcloud.common.data;
 
-import com.infraseed.webcloud.common.core.ValiRet;
+import com.infraseed.webcloud.common.core.ValiResult;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
  */
 public interface BaseOp<T> {
 
-    ValiRet validate(T data);
+    ValiResult validate(T data);
 
     T update(T old, T neu);
 

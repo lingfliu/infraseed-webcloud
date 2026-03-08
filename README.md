@@ -15,7 +15,7 @@ Cloud web service container: multi-service Spring Boot scaffold with gateway, us
 infraseed-webcloud/
 ├── pom.xml                 # Parent BOM and modules
 ├── common/
-│   ├── common-core/        # ValiRet, ErrorCodes, ApiResponse, metadata primitives
+│   ├── common-core/        # ValiResult, ErrorCodes, ApiResult, metadata primitives
 │   ├── common-data/        # BaseEntity, JPA auditing, soft-delete, BaseOp<T>
 │   ├── common-security/    # TenantContext, TenantPrincipal, @TenantAccess aspect
 │   └── common-web/         # GlobalExceptionHandler, PageDto, OpenAPI config
@@ -84,7 +84,7 @@ mvn -q -DskipTests package
 ## Conventions
 
 - **Tenant**: Use `TenantContext.setTenantId(...)` (e.g. from filter reading `X-Tenant-Id` or JWT). Methods that require tenant scope are annotated with `@TenantAccess`.
-- **Data**: Implement `BaseOp<T>` for CRUD; use `ValiRet` for validation (code 0 = pass). Entities extend `BaseEntity` and use `SoftDeleteRepository` for logical delete.
+- **Data**: Implement `BaseOp<T>` for CRUD; use `ValiResult` for validation (code 0 = pass). Entities extend `BaseEntity` and use `SoftDeleteRepository` for logical delete.
 - **API**: Responses use `ApiResponse<T>`. Pagination uses `PageDto<T>.of(Page)`.
 
 ## Deployment (infraseed-devops)

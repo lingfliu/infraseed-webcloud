@@ -1,7 +1,7 @@
 package com.infraseed.webcloud.data.web;
 
-import com.infraseed.webcloud.common.core.ApiResponse;
-import com.infraseed.webcloud.common.core.ValiRet;
+import com.infraseed.webcloud.common.core.ApiResult;
+import com.infraseed.webcloud.common.core.ValiResult;
 import com.infraseed.webcloud.common.security.TenantAccess;
 import com.infraseed.webcloud.common.web.PageDto;
 import com.infraseed.webcloud.data.domain.SampleEntity;
@@ -30,44 +30,44 @@ public class DataController {
     @GetMapping("/samples")
     @TenantAccess
     @Operation(summary = "List samples")
-    public ResponseEntity<ApiResponse<PageDto<SampleEntity>>> list(
+    public ResponseEntity<ApiResult<PageDto<SampleEntity>>> list(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size) {
         var p = sampleEntityService.queryList(PageRequest.of(page, size));
-        return ResponseEntity.ok(ApiResponse.ok(PageDto.of(p)));
+        return ResponseEntity.ok(ApiResult.ok(PageDto.of(p)));
     }
 
     @PostMapping("/samples")
     @TenantAccess
     @Operation(summary = "Create sample")
-    public ResponseEntity<ApiResponse<SampleEntity>> create(@RequestBody SampleEntity body) {
-        ValiRet v = sampleEntityService.validate(body);
+    public ResponseEntity<ApiResult<SampleEntity>> create(@RequestBody SampleEntity body) {
+        ValiResult v = sampleEntityService.validate(body);
         if (!v.isPassed()) {
-            return ResponseEntity.badRequest().body(ApiResponse.fail(v.code(), v.msg()));
+            return ResponseEntity.badRequest().body(ApiResult.err(v.code(), v.msg()));
         }
         SampleEntity created = sampleEntityService.insert(body);
-        return ResponseEntity.ok(ApiResponse.ok(created));
+        return ResponseEntity.ok(ApiResult.ok(created));
     }
 
     @GetMapping("/simple")
     @TenantAccess
     @Operation(summary = "List simple entities")
-    public ResponseEntity<ApiResponse<PageDto<SimpleEntity>>> listSimple(
+    public ResponseEntity<ApiResult<PageDto<SimpleEntity>>> listSimple(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size) {
         var p = simpleEntityService.queryList(PageRequest.of(page, size));
-        return ResponseEntity.ok(ApiResponse.ok(PageDto.of(p)));
+        return ResponseEntity.ok(ApiResult.ok(PageDto.of(p)));
     }
 
     @PostMapping("/simple")
     @TenantAccess
     @Operation(summary = "Create simple entity")
-    public ResponseEntity<ApiResponse<SimpleEntity>> createSimple(@RequestBody SimpleEntity body) {
-        ValiRet v = simpleEntityService.validate(body);
+    public ResponseEntity<ApiResult<SimpleEntity>> createSimple(@RequestBody SimpleEntity body) {
+        ValiResult v = simpleEntityService.validate(body);
         if (!v.isPassed()) {
-            return ResponseEntity.badRequest().body(ApiResponse.fail(v.code(), v.msg()));
+            return ResponseEntity.badRequest().body(ApiResult.err(v.code(), v.msg()));
         }
         SimpleEntity created = simpleEntityService.insert(body);
-        return ResponseEntity.ok(ApiResponse.ok(created));
+        return ResponseEntity.ok(ApiResult.ok(created));
     }
 }

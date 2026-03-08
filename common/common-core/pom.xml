@@ -11,5 +11,5 @@
     </parent>
     <artifactId>common-core</artifactId>
     <name>common-core</name>
-    <description>Core primitives: ValiRet, error codes, base response, metadata</description>
+    <description>Core primitives: ValiResult, error codes, base response, metadata</description>
 </project>

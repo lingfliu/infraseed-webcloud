@@ -1,6 +1,6 @@
 package com.infraseed.webcloud.data.service;
 
-import com.infraseed.webcloud.common.core.ValiRet;
+import com.infraseed.webcloud.common.core.ValiResult;
 import com.infraseed.webcloud.common.data.BaseOp;
 import com.infraseed.webcloud.data.domain.SampleEntity;
 import com.infraseed.webcloud.data.repo.SampleEntityRepository;
@@ -19,11 +19,11 @@ public class SampleEntityService implements BaseOp<SampleEntity> {
     }
 
     @Override
-    public ValiRet validate(SampleEntity data) {
+    public ValiResult validate(SampleEntity data) {
         if (data == null || data.getName() == null || data.getName().isBlank()) {
-            return ValiRet.fail(40001, "name required");
+            return ValiResult.fail(40001, "name required");
         }
-        return ValiRet.pass();
+        return ValiResult.pass();
     }
 
     @Override

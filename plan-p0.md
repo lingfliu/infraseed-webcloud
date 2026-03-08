@@ -27,7 +27,7 @@ This is a repository for cloud web service container.
    3. Data Base attributes: created_at, updated_at, is_deleted, uuid
    4. Common operation interface 
    ```java
-   class ValiRet {
+   class ValiResult {
     int code;
     String msg;
    }
