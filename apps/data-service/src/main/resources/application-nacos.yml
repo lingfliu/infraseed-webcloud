@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_SERVER:localhost:8848}
+        enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false

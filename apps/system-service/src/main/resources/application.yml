@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: system-service
+
+server:
+  port: ${SYSTEM_SERVICE_PORT:8083}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when_authorized

@@ -1,0 +1,55 @@
+# Maven
+target/
+pom.xml.tag
+pom.releaseBackup
+pom.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.log
+hs_err_pid*
+replay_pid*
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local env (keep .env.example)
+deploy/env/.env
+*.local
+
+# Logs
+logs/
+*.log
+
+# Spring Boot
+spring-boot-devtools.properties
+
+# Test / coverage
+coverage/
+*.exec
+.apt_generated/
+
+# Kube / k3d local overrides (optional)
+*.kubeconfig.local
